@@ -10,19 +10,16 @@ import java.util.List;
 
 @Entity
 @Getter
-@Table(name = "tables")
+@Table(name = "books")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
     private Long id;
 
     private String name;
-
-    @OneToMany(mappedBy = "book")
-    private List<Author> authors = new ArrayList<>();
+    private Long authorId;
 
 }

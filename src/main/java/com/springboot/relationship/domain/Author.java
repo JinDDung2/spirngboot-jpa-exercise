@@ -13,13 +13,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Author {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "author_id")
     private Long id;
 
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "authors")
-    private Book book;
 }
