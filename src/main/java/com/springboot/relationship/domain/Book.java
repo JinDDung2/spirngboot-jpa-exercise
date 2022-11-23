@@ -10,13 +10,11 @@ import java.util.List;
 
 @Entity
 @Getter
-@Table(name = "books")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {
 
-    @Id
-    @Column(name = "book_id")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

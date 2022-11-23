@@ -8,13 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Table(name = "authors")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Author {
 
-    @Id
-    @Column(name = "author_id")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

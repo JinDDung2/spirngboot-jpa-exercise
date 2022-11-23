@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Table(name = "reviews")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Review {
