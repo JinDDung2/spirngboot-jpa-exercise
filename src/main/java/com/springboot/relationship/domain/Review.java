@@ -17,7 +17,7 @@ public class Review {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "reviews")
+    @JoinColumn(name = "hospital_id")
     private Hospital hospital;
 
     private String title;
