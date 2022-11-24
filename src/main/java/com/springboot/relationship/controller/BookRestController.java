@@ -1,6 +1,6 @@
 package com.springboot.relationship.controller;
 
-import com.springboot.relationship.domain.dto.BookDto;
+import com.springboot.relationship.domain.dto.BookResponseDto;
 import com.springboot.relationship.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,8 @@ public class BookRestController {
     private final BookService bookService;
 
     @GetMapping("")
-    public ResponseEntity<List<BookDto>> getAll(Pageable pageable) {
-        List<BookDto> books = bookService.getAll(pageable);
+    public ResponseEntity<List<BookResponseDto>> getAll(Pageable pageable) {
+        List<BookResponseDto> books = bookService.getAll(pageable);
         return ResponseEntity.ok(books);
     }
 

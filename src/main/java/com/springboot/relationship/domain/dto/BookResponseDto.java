@@ -8,15 +8,15 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookDto {
+public class BookResponseDto {
 
     private Long id;
     private String name;
     private String authorName;
     private String publisherName;
 
-    public static BookDto of (Book book) {
-        return BookDto.builder()
+    public static BookResponseDto of (Book book) {
+        return BookResponseDto.builder()
                 .id(book.getId())
                 .name(book.getName())
                 .authorName(book.getAuthor().getName())
