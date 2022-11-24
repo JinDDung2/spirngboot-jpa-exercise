@@ -1,0 +1,30 @@
+package com.springboot.relationship.controller;
+
+import com.springboot.relationship.Repository.ReviewRepository;
+import com.springboot.relationship.domain.Review;
+import com.springboot.relationship.domain.dto.ReviewReqDto;
+import com.springboot.relationship.domain.dto.ReviewResDto;
+import com.springboot.relationship.service.ReviewService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/v1/hospitals")
+@RequiredArgsConstructor
+public class ReviewRestController {
+
+    private final ReviewService reviewService;
+
+    @PostMapping("{id}/reviews")
+    public ResponseEntity<ReviewResDto> createReview(@PathVariable Long id, @RequestBody ReviewReqDto reviewReqDto) {
+        ReviewResDto response = reviewService.createReview(reviewReqDto);
+        return ResponseEntity.
+                status(HttpStatus.OK)
+                .body(response);
+    }
+
+
+
+}
