@@ -38,8 +38,8 @@ public class ReviewService {
     }
 
     public ReviewResDto getOne(Long id) {
-        Optional<Review> optionalReview = reviewRepository.findById(id);
-        Review review = optionalReview.get();
+        Review review = reviewRepository.findById(id).orElseThrow(()
+                -> new RuntimeException("해당 아이디가 없습니다."));
         ReviewResDto response = ReviewResDto.from(review);
         return response;
     }
@@ -50,5 +50,21 @@ public class ReviewService {
                 ReviewResDto.from(review)).collect(Collectors.toList());
         return response;
     }
+
+    public List<ReviewResDto> getAllByHospital(Long hospitalId) {
+        Hospital hospital = hospitalRepository.findById(hospitalId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 Id가 없습니다."));
+
+        List<ReviewResDto> response = reviewRepository.findByHospital(hospital).stream().map((review ->
+                        ReviewResDto.builder()
+                                .title(review.getTitle())
+                                .content(review.getContent())
+                                .patientName(review.getPatientName())
+                                .hospitalName(review.getHospital().getName())
+                                .build()))
+                .collect(Collectors.toList());
+        return response;
+    }
+
 
 }
