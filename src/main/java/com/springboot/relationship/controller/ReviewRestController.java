@@ -27,7 +27,7 @@ public class ReviewRestController {
     }
 
     /** 리뷰 전체 조회 */
-    @GetMapping("/reviews")
+    @GetMapping("")
     public ResponseEntity<List<ReviewResDto>> getAll(Pageable pageable) {
         List<ReviewResDto> response = reviewService.getAll(pageable);
         return ResponseEntity
