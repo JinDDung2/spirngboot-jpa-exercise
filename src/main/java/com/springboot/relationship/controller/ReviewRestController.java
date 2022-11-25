@@ -1,7 +1,5 @@
 package com.springboot.relationship.controller;
 
-import com.springboot.relationship.Repository.ReviewRepository;
-import com.springboot.relationship.domain.Review;
 import com.springboot.relationship.domain.dto.ReviewReqDto;
 import com.springboot.relationship.domain.dto.ReviewResDto;
 import com.springboot.relationship.service.ReviewService;
