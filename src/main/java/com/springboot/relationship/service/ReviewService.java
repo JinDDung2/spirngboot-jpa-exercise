@@ -31,29 +31,26 @@ public class ReviewService {
                 .hospital(optionalHospital.get())
                 .build();
         reviewRepository.save(review);
-        ReviewResDto response = ReviewResDto.from(review);
-        return response;
+        return ReviewResDto.from(review);
     }
 
     public ReviewResDto getOne(Long id) {
         Review review = reviewRepository.findById(id).orElseThrow(()
                 -> new RuntimeException("해당 아이디가 없습니다."));
-        ReviewResDto response = ReviewResDto.from(review);
-        return response;
+        return ReviewResDto.from(review);
     }
 
     public List<ReviewResDto> getAll(Pageable pageable) {
         Page<Review> pages = reviewRepository.findAll(pageable);
-        List<ReviewResDto> response = pages.stream().map((review) ->
+        return pages.stream().map((review) ->
                 ReviewResDto.from(review)).collect(Collectors.toList());
-        return response;
     }
 
     public List<ReviewResDto> getAllByHospital(Long hospitalId) {
         Hospital hospital = hospitalRepository.findById(hospitalId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 Id가 없습니다."));
 
-        List<ReviewResDto> response = reviewRepository.findByHospital(hospital).stream().map((review ->
+        return reviewRepository.findByHospital(hospital).stream().map((review ->
                         ReviewResDto.builder()
                                 .title(review.getTitle())
                                 .content(review.getContent())
@@ -61,7 +58,6 @@ public class ReviewService {
                                 .hospitalName(review.getHospital().getName())
                                 .build()))
                 .collect(Collectors.toList());
-        return response;
     }
 
 
